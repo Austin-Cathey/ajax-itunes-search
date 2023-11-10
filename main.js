@@ -12,7 +12,7 @@ searchForm.addEventListener('submit', (event) => {
         if (response.status === 200) {
             return response.json();}
             else {
-                let errorMsg = document.createElement('h3');
+                let errorMsg = document.createElement('h2');
                 errorMsg.innerText = "Error, double-check your tunes.";
                 results.appendChild(errorMsg);
             }
@@ -20,3 +20,19 @@ searchForm.addEventListener('submit', (event) => {
             console.log(parsedJsonResponse);
         })
     })
+
+    
+//trying to create resultsCard, not sure how to pull from response
+    function resultsInfo(response) {
+        return `<div class="resultsCard">
+        <img src="${response.results.artworkUrl30}" class="resultsPhoto">
+        <p class="songTitle">${response.results.trackName}</p>
+        <h3 class="artistName">${response.results.artistName}</h3>
+        </div>
+         `
+    };
+
+    let allResults = response.map((response) =>
+    resultsInfo(response)).join('\n');
+
+    entryPoint.innerHTML = allResults;
