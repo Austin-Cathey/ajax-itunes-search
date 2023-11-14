@@ -4,7 +4,7 @@ let searchForm = document.getElementById("searchForm");
 let searchField = document.getElementById("searchField");
 let button = document.getElementById("searchButton");
 let resultsContainer = document.getElementById("results");
-
+let resultsCard = document.querySelectorAll(".resultsCard");
 
 
 
@@ -29,7 +29,7 @@ let resultsContainer = document.getElementById("results");
             return songs.map(results => {
                 resultsContainer.innerHTML +=
                 `<div class="resultsCard">
-        <img src="${results.artworkUrl30}" class="resultsPhoto">
+        <img src="${results.artworkUrl100}" class="resultsPhoto">
         <h3 class="artistName">${results.artistName}</h3>
         <p class="songTitle">${results.trackName}</p>
         </div>
@@ -37,10 +37,20 @@ let resultsContainer = document.getElementById("results");
             })
             })
             
-        })
+        });
+
     
+/* resultsCard.addEventListener('click', function(e) {
+    if (e.target && e.target.nodeName ==)
+    
+}) */
 
-
+{/* <figure>
+        <figcaption>Now listening to:${results.trackName}</figcaption>
+        <audio controls src=${results.previewUrl}>
+          
+        </audio>
+      </figure> */}
     
     //couldn't get this to work
         /* const app = {
