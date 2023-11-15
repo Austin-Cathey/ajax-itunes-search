@@ -9,7 +9,12 @@
   </head>
   <body>
     <h1>Super Rad Music</h1>
-    <!-- Music preview function with <audio></audio> and play button -->
+    <div id="musicPlayer">
+      <figure>
+        <figcaption>Playing sample</figcaption>
+        <audio controls id="playingPreview" src=""></audio>
+      </figure>
+    </div>
     <h2>Find some good tunes</h2>
     <form action="" id="searchForm">
       <input type="text" name="searchField" id="searchField" required />

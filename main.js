@@ -5,7 +5,8 @@ let searchField = document.getElementById("searchField");
 let button = document.getElementById("searchButton");
 let resultsContainer = document.getElementById("results");
 let resultsCard = document.querySelectorAll(".resultsCard");
-
+let playingPreview = document.getElementById("playingPreview");
+let playSample = document.querySelectorAll(".playSample");
 
 
 
@@ -32,75 +33,22 @@ let resultsCard = document.querySelectorAll(".resultsCard");
         <img src="${results.artworkUrl100}" class="resultsPhoto">
         <h3 class="artistName">${results.artistName}</h3>
         <p class="songTitle">${results.trackName}</p>
+        <button class="playSample" data-id="${results.trackId}">Play Sample</button>
         </div>
-         `
-            })
+        `
+        //need to use dataset.id for target
+        function play() {
+            playSample.addEventListener('click', (event) => {
+            event.preventDefault();
+                playingPreview.src = results.previewUrl
+                console.log(playingPreview.src)
+        });
+    }
+            });
+        play();
+
+            
+
             })
             
-        });
-
-    
-/* resultsCard.addEventListener('click', function(e) {
-    if (e.target && e.target.nodeName ==)
-    
-}) */
-
-{/* <figure>
-        <figcaption>Now listening to:${results.trackName}</figcaption>
-        <audio controls src=${results.previewUrl}>
-          
-        </audio>
-      </figure> */}
-    
-    //couldn't get this to work
-        /* const app = {
-   data: {
-     musicURL: "https://itunes.apple.com/search?term=",
-     music: []
-   },
-
-  searchMusic: function() {
-    let searchField = document.getElementById("searchField");
-    let field = searchField.value;
-    this.data.music = [];
-    fetch(this.data.musicURL + field, {
-        method: 'GET',
-        headers: {"Content-Type": "application/json"}
-    })
-    .then(r=> r.json())
-    .then(response => {
-        console.log(response)
-        for (let song of response.results) {
-            this.data.music.push(song)
-        }this.generateMusic();
-    })
-    },
-
-    generateMusic: function() {
-        let results = document.getElementById("results");
-        results.innerHTML = [];
-        for (let song of this.data.music) {
-            results.innerHTML += `<div class="resultsCard">
-            <img src="${song.artworkUrl30}" class="resultsPhoto">
-            <p class="songTitle">${song.trackName}</p>
-            <h3 class="artistName">${song.artistName}</h3>
-            </div>
-             `
-        }
-    },
-addEventListeners: function() {
-    let field= [];
-    let searchButton = document.getElementById("searchButton");
-for (let button of searchButton) {
-    button.addEventListener('submit', (event) => {
-        event.preventDefault();
-        this.searchMusic();
-    })
-}},
-
-main: function() {
-    
-
-},
-}
-app.main() */
+        })
