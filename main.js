@@ -14,7 +14,7 @@ let playingPreview = document.getElementById("playingPreview");
         event.preventDefault();
         let field = []
          field = searchField.value
-    console.log(field);
+   /*  console.log(field); */
     fetch(musicURL + field + "&media=music").then((response) => {
         if (response.status === 200) {
             return response.json();}
@@ -38,20 +38,20 @@ let playingPreview = document.getElementById("playingPreview");
         `
         
         let playSample = document.querySelectorAll(".playSample");
-        let previewId = results.trackId;
-        playSample.dataset.trackId = previewId
+        let previewId = results.trackId
+        
         //need to use dataset.id for target
         function play() {
             playSample.addEventListener('click', (event) => {
             event.preventDefault();
-                playingPreview.src = previewId
-                console.log(playingPreview.src)
-                play(button.dataset.trackId);
+                playingPreview.src = results.previewUrl
+                console.log(results.previewUrl)
+                
         });
     }
             });
         
-            
+            play();
 
             })
             
