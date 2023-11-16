@@ -6,7 +6,7 @@ let button = document.getElementById("searchButton");
 let resultsContainer = document.getElementById("results");
 let resultsCard = document.querySelectorAll(".resultsCard");
 let playingPreview = document.getElementById("playingPreview");
-let playSample = document.querySelectorAll(".playSample");
+
 
 
 
@@ -24,7 +24,7 @@ let playSample = document.querySelectorAll(".playSample");
                 results.appendChild(errorMsg);
             }
         }).then((parsedJsonResponse) => {
-            console.log(parsedJsonResponse);
+            /* console.log(parsedJsonResponse); */
             const songs = parsedJsonResponse.results;
             results.innerHTML = []
             return songs.map(results => {
@@ -36,19 +36,24 @@ let playSample = document.querySelectorAll(".playSample");
         <button class="playSample" data-id="${results.trackId}">Play Sample</button>
         </div>
         `
+        
+        let playSample = document.querySelectorAll(".playSample");
+        let previewId = results.trackId;
+        playSample.dataset.trackId = previewId
         //need to use dataset.id for target
         function play() {
             playSample.addEventListener('click', (event) => {
             event.preventDefault();
-                playingPreview.src = results.previewUrl
+                playingPreview.src = previewId
                 console.log(playingPreview.src)
+                play(button.dataset.trackId);
         });
     }
             });
-        play();
-
+        
             
 
             })
             
         })
+    
